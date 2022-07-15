@@ -41,7 +41,7 @@ Or a version with simpler names:
 
 ```java
 boolean trueVar = true; 
-booelan falseVar = false; 
+boolean falseVar = false; 
 ```
 
 Boolean expressions support the following comparison operators:
