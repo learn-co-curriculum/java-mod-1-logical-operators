@@ -36,29 +36,29 @@ Let's break this down and explain what each operator means in this table:
 
 - `&&` (**AND**) returns true if and only if both sides of the binary operator
   are true, so:
-    - `expression1` evaluates to true.
-    - `expression2` evaluates to false.
-    - Therefore, `expression1 && expression2` is synonymous to `true && false`.
-    - Since the value true is not on both sides of the operator, the logical
+  - `expression1` evaluates to true.
+  - `expression2` evaluates to false.
+  - Therefore, `expression1 && expression2` is synonymous to `true && false`.
+  - Since the value true is not on both sides of the operator, the logical
       expression would return false.
 - `||` (**OR**) returns true if either side of the binary operator is true, so:
-    - `expression1` evaluates to true.
-    - `expression2` evaluates to false.
-    - Therefore, `expression1 || expression2` is synonymous to `true || false`.
-    - Since the value true is on at least one side of the operator, the logical
+  - `expression1` evaluates to true.
+  - `expression2` evaluates to false.
+  - Therefore, `expression1 || expression2` is synonymous to `true || false`.
+  - Since the value true is on at least one side of the operator, the logical
       expression would return true.
 - `!` (**NOT**) is a unary operator that returns the reverse of its single
   operand, so:
-    - `expression1` evaluates to true.
-    - Therefore, `!expression1` is the same as `!true`.
-    - Well, the opposite of "not true" is false. So the logical expression,
+  - `expression1` evaluates to true.
+  - Therefore, `!expression1` is the same as `!true`.
+  - Well, the opposite of "not true" is false. So the logical expression,
       `!expression1` would return false.
 - `^` (**XOR**) pronounced "exclusive or" or "x-or" returns true if and only if
   both sides of the binary operator are different.
-    - `expression1` evaluates to true.
-    - `expression2` evaluates to false.
-    - Therefore, `expression1 ^ expression2` is the same as `true ^ false`.
-    - Since the boolean values are different, the logical expression would return
+  - `expression1` evaluates to true.
+  - `expression2` evaluates to false.
+  - Therefore, `expression1 ^ expression2` is the same as `true ^ false`.
+  - Since the boolean values are different, the logical expression would return
       true.
 
 Logical operators are helpful and often used within conditional clauses.
