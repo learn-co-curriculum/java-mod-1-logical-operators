@@ -1,60 +1,119 @@
-# The Conditional Clause
+# Logical Operators
 
 ## Learning Goals
 
-- Explain boolean expressions
-- Use conditional clauses
+- Explain logical operators
+- Discuss Truth Tables
 
-## Introduction
+## What is a Logical Operator?
 
-A Java "conditional clause" is an expression that evaluates (i.e. returns) either true or false. These are the only two valid
-values for a conditional clause, no in-between.
-
-In the example above, `age > 18` can only return two values: "either `age` is larger than `18` or it's not". Notice that I didn't say
-"either `age` is larger than `18` or it's smaller than `18`", and that's because the latter wording would leave open a third
-possibility, which is that "age could be equal to 18", which would then lead to a third possible value.
-
-Expressions that can only evaluate to either `true` or `false` are called `boolean` expressions. Similarly, variables of type
-`boolean` are variables that can only hold the value `true` or the value `false`. For example:
+**Logical operators** allow us to compare boolean values against each other.
+Just like we can compare numerical values with relational operators, logical
+operators do the same except with true/false values. The result of logical
+operators will always be a boolean, just like relational operators! Let's
+look at two boolean expressions:
 
 ```java
-boolean userIsAdult = age > 18; 
+int firstNumber = 20;
+int secondNumber = 10;
+
+boolean expression1 = firstNumber > secondNumber;
+boolean expression2 = firstNumber != 20;
 ```
 
-Defines a variable named `userIsAdult` of type `boolean` and assigns it the values that the expression `age > 18` returns.
-With that, we could rewrite our `if` statement as follows:
+Now that we have two boolean expressions we can compare, we still have to ask
+"How do we compare these two expressions?" Consider the following table of
+logical operators:
 
-```java
-if (userIsAdult) {
-    System.out.println("Look at you, all grown up");
-}
-```
+| Operator                  | Description |
+|---------------------------|-------------|
+| `&&`                      | AND         |
+| <code>&vert;&vert;</code> | OR          |
+| `!`                       | NOT         |
+| `^`                       | XOR         |
 
-Boolean variables can also be assigned a hard-coded value of either `true` or `false`: 
+Let's break this down and explain what each operator means in this table:
 
-```java
-boolean thisVariableIsTrue = true; 
-boolean thisVariableIsFalse = false; 
-```
+- `&&` (**AND**) returns true if and only if both sides of the binary operator
+  are true, so:
+    - `expression1` evaluates to true.
+    - `expression2` evaluates to false.
+    - Therefore, `expression1 && expression2` is synonymous to `true && false`.
+    - Since the value true is not on both sides of the operator, the logical
+      expression would return false.
+- `||` (**OR**) returns true if either side of the binary operator is true, so:
+    - `expression1` evaluates to true.
+    - `expression2` evaluates to false.
+    - Therefore, `expression1 || expression2` is synonymous to `true || false`.
+    - Since the value true is on at least one side of the operator, the logical
+      expression would return true.
+- `!` (**NOT**) is a unary operator that returns the reverse of its single
+  operand, so:
+    - `expression1` evaluates to true.
+    - Therefore, `!expression1` is the same as `!true`.
+    - Well, the opposite of "not true" is false. So the logical expression,
+      `!expression1` would return false.
+- `^` (**XOR**) pronounced "exclusive or" or "x-or" returns true if and only if
+  both sides of the binary operator are different.
+    - `expression1` evaluates to true.
+    - `expression2` evaluates to false.
+    - Therefore, `expression1 ^ expression2` is the same as `true ^ false`.
+    - Since the boolean values are different, the logical expression would return
+      true.
 
-Or a version with simpler names: 
+Logical operators are helpful and often used within conditional clauses.
+It would be nice to have a tool though to help us quickly evaluate these
+logical expressions. This is where truth tables are helpful!
 
-```java
-boolean trueVar = true; 
-boolean falseVar = false; 
-```
+## Truth Tables
 
-Boolean expressions support the following comparison operators:
+A **truth table** is a tabular representation of input and output combinations.
+We can create truth tables for all of our logical operators, so we know what
+each combination would return. This tool is helpful for us to look back on
+when we may be unsure what an expression should return.
 
-* `==` compares two values and returns `true` if they are equal or `false` if they are not equal
-* `!=` compares two values and returns `true` if they are not equal or `false` if they are equal
-* `>` return true if the left-hand side operand is strictly greater than the right-hand side operand, or false otherwise
-* `<` return true if the left-hand side operand is strictly smaller than the right-hand side operand, or false otherwise
-* `>=` return true if the left-hand side operand is greater than or equal to the right-hand side operand, or false otherwise
-* `<=` return true if the left-hand side operand is smaller than or equal to the right-hand side operand, or false otherwise
+For each of these truth tables, consider X to be the first input and Y to be
+the second input (when appropriate) where both X and Y are boolean values.
 
-These comparison operators can be combined with the following logical operators:
+### AND
 
-* `&&` returns true if and only if both sides of the operator are true, so `trueVar && trueVar` returns `true` while `trueVar && falseVar` returns `false` 
-* `||` returns true if either side of the operator is true, so `trueVar || falseVar` return `true` while `falseVar || falseVar` returns `false`
-* `!` is a unary operator that returns the reverse of its single operand, so `!trueVar = false` and `!falseVar = true`
+| X     | Y     | X && Y |
+|-------|-------|--------|
+| true  | true  | true   |
+| true  | false | false  |
+| false | true  | false  |
+| false | false | false  |
+
+A note about the `&&` operator is that it makes use of the short-circuit effect.
+This means, that if the left-hand operand is false, then the expression will
+immediately return false without looking at the right-hand operand.
+
+### OR
+
+| X     | Y     | X &vert;&vert; Y |
+|-------|-------|------------------|
+| true  | true  | true             |
+| true  | false | true             |
+| false | true  | true             |
+| false | false | false            |
+
+The `||` operator also makes use of the short-circuit effect, but does so a
+little differently than the `&&` operator. For the `||` operator, if the
+left-hand operand is true, then the expression will immediately return true
+without looking at the right-hand operand.
+
+### NOT
+
+| X     | !X    |
+|-------|-------|
+| true  | false |
+| false | true  |
+
+### XOR
+
+| X     | Y     | X ^ Y |
+|-------|-------|-------|
+| true  | true  | false |
+| true  | false | true  |
+| false | true  | true  |
+| false | false | false |
